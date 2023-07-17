@@ -1,6 +1,15 @@
 // Length of string 
 const stringLength = str => {
+  if (typeof str !== 'string') {
+    throw new Error('The value inserted is not a string');
+  }
+
   const length = str.length;
+
+  if ( length < 1 || length > 10 ) {
+    throw new Error('The length must be between 1 and 10');
+  }
+
   return length;
 }
 
@@ -12,33 +21,47 @@ const reverseString = str => {
 // Calculator class
 
 class Calculator {
-  constructor(num1, num2) {
-    this.num1 = num1;
-    this.num2 = num2;
-  }
-
   // Addition
-  add() {
-    return this.num1 + this.num2;
+  add(a, b) {
+    return a + b;
   }
 
   //  Subtraction
-  subtract() {
-    return this.num1 - this.num2;
+  subtract(a, b) {
+    return a - b;
   }
 
   //  Multiplication
-  multiply() {
-    return this.num1 * this.num2;
+  multiply(a, b) {
+    return a * b;
   }
 
   // Divide
-  divide() {
-    return this.num1 / this.num2;
+  divide(a, b) {
+    if (b === 0) {
+      throw new Error('Invalid number! Pick a value more than 0');
+    }
+    return a / b;
   }
 }
+
+// Capitalization of first letter in a word
+const capitalizeFirstLetter = str => {
+  if (typeof str !== 'string') {
+    throw new Error('Input must be a string');
+  }
+
+  if (str.length === 0) {
+    return '';
+  }
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 
 // Exportations
 
 module.exports.stringLength = stringLength;
 module.exports.reverseString = reverseString;
+module.exports.Calculator = Calculator;
+module.exports.capitalizeFirstLetter = capitalizeFirstLetter;
